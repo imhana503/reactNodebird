@@ -9,7 +9,7 @@ import UserProfile from './UserProfile';
 const AppLayout = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   
-  return(
+  return( 
     <div>
       <Menu mode="horizontal">
         <Menu.Item><Link href="/">노드버드</Link></Menu.Item>
