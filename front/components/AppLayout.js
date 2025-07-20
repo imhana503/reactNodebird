@@ -10,7 +10,7 @@ const AppLayout = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   
   return( 
-    <div>
+    <div> 
       <Menu mode="horizontal">
         <Menu.Item><Link href="/">노드버드</Link></Menu.Item>
         <Menu.Item><Link href="/profile">프로필</Link></Menu.Item>
