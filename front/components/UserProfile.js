@@ -8,9 +8,9 @@ const UserProfile = ({ setIsLoggedIn }) => {
   return(
     <Card
       actions={[
-        <div key="twit">짹짹</div>,
-        <div key="followings">팔로잉</div>,
-        <div key="followers">팔로워</div>,
+        <div key="twit">짹짹<br/>0</div>,
+        <div key="followings">팔로잉<br/>0</div>,
+        <div key="followers">팔로워<br/>0</div>,
       ]}
     >
       <Card.Meta
