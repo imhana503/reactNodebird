@@ -36,7 +36,7 @@ const Signup = () => {
   const onSubmit = useCallback(()=>{
     if(password !== passwordCheck) return setPasswordError(true);
     if(!term) return setTermError(true);
-    console.log(id, nickname, password);
+    console.log(email, nickname, password);
   }, [password, passwordCheck, term]);
   
   return(
