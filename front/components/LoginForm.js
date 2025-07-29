@@ -4,7 +4,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Form, Button, Input } from 'antd';
-import { loginAction } from './../reducers';
+import { loginAction } from './../reducers/user';
 
 
 const ButtonWrap = styled.div`
