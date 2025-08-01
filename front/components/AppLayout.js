@@ -14,8 +14,7 @@ const InputSearch = styled(Input.Search)`
 
 const AppLayout = ({ children }) => {
   const isLoggedIn = useSelector((state)=>state.user.isLoggedIn);
- 
-  
+   
   return( 
     <div> 
       <Menu mode="horizontal">
