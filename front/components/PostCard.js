@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Card, Popover, Button, Avatar } from 'antd';
@@ -8,15 +8,25 @@ import PostImages from './PostImages';
 
 const PostCard = ({ post }) => {
   const id = useSelector((state)=>state.user.me?.id);
+  const [liked, setLiked] = useState(false);
+  const [commentFormOpened, setCommentFormOpened] = useState(false);
+  const onToggleLike = useCallback(()=>{
+    setLiked((prev)=>!prev);
+  }, []);
+  const onToggleComment = useCallback(()=>{
+    setCommentFormOpened((prev)=>!prev);
+  }, []);
 
   return(
-    <div>
+    <div style={{ marginBottom: '20px' }}>
       <Card
         cover={post.Images[0] && <PostImages images={post.images}/>}
         actions={[
           <RetweetOutlined key="retweet"/>,
-          <HeartOutlined key="heart"/>,
-          <MessageOutlined key="comment"/>,
+          liked 
+            ? <HeartTwoTone twoToneColor="#eb2f96" key="heart" onClick={onToggleLike}/> 
+            : <HeartOutlined key="heart" onClick={onToggleLike}/>,
+          <MessageOutlined key="comment" onClick={onToggleComment}/>,
           <Popover key="ellipsis" 
             content={(
             <Button.Group>
@@ -39,6 +49,9 @@ const PostCard = ({ post }) => {
           description={post.content}
         />
       </Card>
+      
+      { commentFormOpened && (<div>댓글</div>) }
+
     </div>
   )
 };
