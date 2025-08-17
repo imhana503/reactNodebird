@@ -1,10 +1,11 @@
 import React, { useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Card, Popover, Button, Avatar } from 'antd';
+import { Card, Popover, Button, Avatar, List, Comment } from 'antd';
 import { RetweetOutlined, HeartTwoTone, HeartOutlined, MessageOutlined, EllipsisOutlined } from '@ant-design/icons';
 
 import PostImages from './PostImages';
+import CommentForm from './CommentForm';
 
 const PostCard = ({ post }) => {
   const id = useSelector((state)=>state.user.me?.id);
@@ -50,7 +51,26 @@ const PostCard = ({ post }) => {
         />
       </Card>
       
-      { commentFormOpened && (<div>댓글</div>) }
+      { commentFormOpened && (
+        <div>
+            <CommentForm post={post}/>
+            <List
+              header={`${post.Comments.length} 개의 댓글`}
+              itemLayout='horizontal'
+              dataSource={post.Comments}
+              renderItem={(item)=>(
+                <li>
+                  <Comment
+                    author={item.User.nickname}
+                    avatar={<Avatar>{item.User.nickname}</Avatar>}
+                    content={item.content}
+                  />
+                </li>
+              )}
+            />
+        </div>
+
+      ) }
 
     </div>
   )
